@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Constant from "expo-constants";
+import React, { useState } from 'react';
+import Constant from 'expo-constants';
 import {
   Text,
   View,
@@ -8,11 +8,13 @@ import {
   Button,
   ActivityIndicator,
   Modal,
-} from "react-native";
+} from 'react-native';
+
+import { Login } from './components/screens/LoginScreen';
 
 export default function App() {
-  const [loginID, setLoginID] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginID, setLoginID] = useState('');
+  const [password, setPassword] = useState('');
 
   const [loading, setLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -28,12 +30,12 @@ export default function App() {
 
       try {
         const res = await fetch(
-          "https://api.icndb.com/jokes/random?firstName=Dipen&lastName=Patel"
+          'https://api.icndb.com/jokes/random?firstName=Dipen&lastName=Patel'
         );
         const result = await res.json();
         console.log(result);
 
-        if (result.type == "success") {
+        if (result.type == 'success') {
           showHomeModel(true);
           setLoading(false);
         }
@@ -82,10 +84,9 @@ export default function App() {
         animationType="slide"
         onRequestClose={() => {
           showHomeModel(false);
-        }}
-      >
+        }}>
         <View style={appStyle.container}>
-          <Text style={[appStyle.textHeader, { color: "#00FF00" }]}>
+          <Text style={[appStyle.textHeader, { color: '#00FF00' }]}>
             Login success
           </Text>
           <Button
@@ -103,12 +104,12 @@ export default function App() {
 const appStyle = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#252250",
+    backgroundColor: '#252250',
     padding: 20,
     marginTop: Constant.statusBarHeight,
   },
   textInput: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     padding: 20,
     marginTop: 10,
   },
@@ -116,10 +117,10 @@ const appStyle = StyleSheet.create({
     padding: 20,
   },
   textHeader: {
-    color: "#FFFFFF",
-    fontWeight: "bold",
+    color: '#FFFFFF',
+    fontWeight: 'bold',
   },
   textError: {
-    color: "#FF0000",
+    color: '#FF0000',
   },
 });
